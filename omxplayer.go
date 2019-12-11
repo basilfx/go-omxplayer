@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"strings"
 
-	dbus "github.com/guelfey/go.dbus"
+	dbus "github.com/godbus/dbus/v5"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -66,10 +66,12 @@ func New(url string, args ...string) (player *Player, err error) {
 		return
 	}
 
+	bus := conn.Object(ifaceOmx, pathMpris).(*dbus.Object)
+
 	player = &Player{
 		command:    cmd,
 		connection: conn,
-		bus:        conn.Object(ifaceOmx, pathMpris),
+		bus:        bus,
 	}
 	return
 }

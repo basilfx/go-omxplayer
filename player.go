@@ -6,7 +6,7 @@ import (
 	"syscall"
 	"time"
 
-	dbus "github.com/guelfey/go.dbus"
+	dbus "github.com/godbus/dbus/v5"
 	log "github.com/sirupsen/logrus"
 )
 
