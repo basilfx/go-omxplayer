@@ -89,6 +89,7 @@ func (p *Player) IsRunning() bool {
 // Poll IsRunning().
 func (p *Player) Wait(status chan error) {
 	status <- p.command.Wait()
+	p.ready = false
 }
 
 // IsReady checks to see if the Player instance is ready to accept D-Bus
