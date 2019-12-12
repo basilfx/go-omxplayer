@@ -83,6 +83,14 @@ func (p *Player) IsRunning() bool {
 	return err != nil
 }
 
+// Wait blocks till the running omxplayer instance ends and sends a signal through
+// the supplied channel. This is just so we know exactly when omxplayer exits,
+// mostly so we can tell when the video it was playing ended without having to
+// Poll IsRunning().
+func (p *Player) Wait(status chan error) {
+	status <- p.command.Wait()
+}
+
 // IsReady checks to see if the Player instance is ready to accept D-Bus
 // commands. If the player is ready and can accept commands, the function
 // returns true, otherwise it returns false.
