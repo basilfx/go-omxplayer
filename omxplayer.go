@@ -165,3 +165,10 @@ func execOmxplayer(url string, args ...string) (cmd *exec.Cmd, err error) {
 	err = cmd.Start()
 	return
 }
+
+// wait blocks till the running omxplayer instance ends and sends a signal through
+// the supplied channel. This is just so we know exactly when omxplayer exits,
+// mostly so we can tell when the video it was playing ended.
+func wait(cmd *exec.Cmd, status chan error) {
+	status <- cmd.Wait()
+}
