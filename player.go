@@ -112,7 +112,7 @@ func (p *Player) IsReady() bool {
 // commands and then returns.
 func (p *Player) WaitForReady() {
 	for !p.IsReady() {
-		time.Sleep(50 * time.Millisecond)
+		time.Sleep(25 * time.Millisecond)
 	}
 }
 
