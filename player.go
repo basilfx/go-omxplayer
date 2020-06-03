@@ -60,6 +60,7 @@ const (
 	cmdShowSubtitles        = ifaceOmxPlayer + ".ShowSubtitles"
 	cmdHideSubtitles        = ifaceOmxPlayer + ".HideSubtitles"
 	cmdAction               = ifaceOmxPlayer + ".Action"
+	cmdOpenURI              = ifaceOmxPlayer + ".OpenUri"
 )
 
 // The Player struct provides access to all of omxplayer's D-Bus methods.
@@ -437,4 +438,14 @@ func (p *Player) Action(action int32) error {
 		"paramAction": action,
 	}).Debug("omxplayer: dbus call")
 	return p.bus.Call(cmdAction, 0, action).Err
+}
+
+// OpenURI opens another URI in the running instance. See
+// https://github.com/popcornmix/omxplayer#openuri for more details.
+func (p *Player) OpenURI(uri string) error {
+	call := p.bus.Call(cmdOpenURI, 0, uri)
+	if call.Err != nil {
+		return call.Err
+	}
+	return nil
 }
