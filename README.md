@@ -1,8 +1,8 @@
 omxplayer
 =========
 
-[![Build Status](https://travis-ci.org/jleight/omxplayer.svg?branch=master)](https://travis-ci.org/jleight/omxplayer)
-[![GoDoc](https://godoc.org/github.com/jleight/omxplayer?status.svg)](https://godoc.org/github.com/jleight/omxplayer)
+[![Build Status](https://travis-ci.org/basilfx/omxplayer.svg?branch=master)](https://travis-ci.org/basilfx/omxplayer)
+[![GoDoc](https://godoc.org/github.com/basilfx/omxplayer?status.svg)](https://godoc.org/github.com/basilfx/omxplayer)
 
 > omxplayer is a simple library for controlling
 > [omxplayer](https://github.com/popcornmix/omxplayer) on your
@@ -35,14 +35,14 @@ Getting Started
 The omxplayer library follows the standard Go package format, allowing you to
 start using it with a single command:
 
-    go get github.com/jleight/omxplayer
+    go get github.com/basilfx/omxplayer
 
 Once the library has been downloaded to your Go path, you can import it in your
 project to start using it:
 
 ```go
 import (
-	"github.com/jleight/omxplayer"
+	"github.com/basilfx/omxplayer"
 )
 ```
 
@@ -141,5 +141,5 @@ License
 -------
 
 The omxplayer library is available under the MIT license. See the
-[LICENSE](https://github.com/jleight/omxplayer/blob/master/LICENSE) file for
+[LICENSE](https://github.com/basilfx/omxplayer/blob/master/LICENSE) file for
 the full license text.
