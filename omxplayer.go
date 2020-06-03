@@ -20,7 +20,6 @@ const (
 	pathMpris          = "/org/mpris/MediaPlayer2"
 	ifaceMpris         = "org.mpris.MediaPlayer2"
 	ifaceOmx           = ifaceMpris + ".omxplayer"
-	exeOxmPlayer       = "omxplayer"
 	keyPause           = "p"
 )
 
@@ -29,6 +28,7 @@ var (
 	home            string
 	fileOmxDbusPath string
 	fileOmxDbusPid  string
+	exeOxmPlayer    = "omxplayer"
 )
 
 func init() {
@@ -44,6 +44,11 @@ func SetUser(u, h string) {
 	home = h
 	fileOmxDbusPath = prefixOmxDbusFiles + user
 	fileOmxDbusPid = prefixOmxDbusFiles + user + suffixOmxDbusPid
+}
+
+// SetExecutable can be used to set the default command to start OMXPlayer.
+func SetExecutable(executable string) {
+	exeOxmPlayer = executable
 }
 
 // New returns a new Player instance that can be used to control an OMXPlayer
