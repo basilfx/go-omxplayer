@@ -81,7 +81,7 @@ func (p *Player) IsRunning() bool {
 	}
 
 	err = process.Signal(syscall.Signal(0))
-	return err != nil
+	return err == nil
 }
 
 // Wait blocks till the running omxplayer instance ends and sends a signal through
