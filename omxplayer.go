@@ -81,6 +81,32 @@ func New(url string, args ...string) (player *Player, err error) {
 	return
 }
 
+// NewDirect returns a new Player instance that can be used to control an
+// OMXPlayer instance that is playing the video located at the specified URL.
+// The difference with New is that this method does not rely on OMXPlayer
+// wrapper script that writes its DBUS address and PID to a temporary file
+// (the wrapper script is not provided by all installations of OMXPlayer).
+func NewDirect(url string, args ...string) (player *Player, err error) {
+	cmd, err := execOmxplayer(url, args...)
+	if err != nil {
+		return
+	}
+
+	conn, err := dbus.SessionBus()
+	if err != nil {
+		return
+	}
+
+	bus := conn.Object(ifaceOmx, pathMpris).(*dbus.Object)
+
+	player = &Player{
+		command:    cmd,
+		connection: conn,
+		bus:        bus,
+	}
+	return
+}
+
 // removeDbusFiles removes the files that OMXPlayer creates containing the D-Bus
 // path and PID. This ensures that when the path and PID are read in, the new
 // files are read instead of the old ones.
