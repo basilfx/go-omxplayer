@@ -116,6 +116,11 @@ func (p *Player) WaitForReady() {
 	}
 }
 
+// GetCommand returns the command instance of the OMXPlayer process.
+func (p *Player) GetCommand() *exec.Cmd {
+	return p.command
+}
+
 // Quit stops the currently playing video and terminates the omxplayer process.
 // See https://github.com/popcornmix/omxplayer#quit for more details.
 func (p *Player) Quit() error {
