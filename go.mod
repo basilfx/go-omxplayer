@@ -1,4 +1,4 @@
-module github.com/basilfx/omxplayer
+module github.com/basilfx/go-omxplayer
 
 go 1.13
 
